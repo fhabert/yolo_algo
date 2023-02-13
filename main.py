@@ -178,16 +178,15 @@ class Derivatives():
     def linear(self, value):
         return 1     
 
-def get_images(num_images):
-    url = "https://www.freepik.com/photos/tables-open/2" 
+def get_images(num_images, nb_page):
+    global num_image
+    url = f"https://www.freepik.com/photos/tables-open/{nb_page}" 
     HEADERS = {'User-Agent': 'Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'}
     webpage_source = requests.get(url=url, headers=HEADERS)
     webpage = webpage_source.content
     tables = BeautifulSoup(webpage, "html.parser")
     images = tables.find_all("figure", class_="showcase__item", limit=num_images)
     img_src = [img['data-image'] for img in images]
-    counter_img = 3
-    print(len(img_src))
     for i in range(len(img_src)):
         r = requests.get(url=img_src[i], headers=HEADERS)
         if r.status_code == 200:
@@ -201,11 +200,11 @@ def get_images(num_images):
             #     img.show()
             # add_line(flatten_pool)
             # print("Add a photo:", i)
-            with open(f"more_images/table{i}.png", "wb") as f:
+            with open(f"images3/table{num_image}.png", "ab") as f:
                 f.write(r.content)
                 print("New picture:", i)
             f.close()
-        counter_img += 1
+        num_image += 1
     pass
 
 def initialise_neural():
@@ -269,8 +268,10 @@ yolo = Yolo()
 # cv.destroyAllWindows()
 
 n_images = 50
+num_image = 1
 # nn = initialise_neural()
 # for i in range(4):
 #     print(nn.layers[i].nodes)
-get_images(n_images)
+for i in range(3, 18):
+    get_images(n_images, i)
 
