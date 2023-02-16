@@ -1,8 +1,8 @@
 
-Semi autonomous guidance - v2 2023-02-10 9:57am
+Semi autonomous guidance - v3 2023-02-13 5:36pm
 ==============================
 
-This dataset was exported via roboflow.com on February 10, 2023 at 9:58 AM GMT
+This dataset was exported via roboflow.com on February 13, 2023 at 4:38 PM GMT
 
 Roboflow is an end-to-end computer vision platform that helps you
 * collaborate with your team on computer vision projects
@@ -17,13 +17,16 @@ visit https://github.com/roboflow/notebooks
 
 To find over 100k other datasets and pre-trained models, visit https://universe.roboflow.com
 
-The dataset includes 62 images.
+The dataset includes 540 images.
 Table are annotated in YOLO v5 PyTorch format.
 
 The following pre-processing was applied to each image:
 * Auto-orientation of pixel data (with EXIF-orientation stripping)
 * Resize to 640x640 (Stretch)
 
-No image augmentation techniques were applied.
+The following augmentation was applied to create 3 versions of each source image:
+* 50% probability of horizontal flip
+* Random brigthness adjustment of between -25 and +25 percent
+* Salt and pepper noise was applied to 3 percent of pixels
 
 

@@ -1,3 +1,8 @@
 images1/
 images2/
 images3/
+datasets/
+dataset/
+roboflow_images/test/
+roboflow_images/train/
+roboflow_images/valid/
